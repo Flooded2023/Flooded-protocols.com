@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions and Answers</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .logo {
+			width: 400px; /* Adjust the width as needed */
+			height: auto; /* Maintain aspect ratio */
+			margin-bottom: 20px;
+			position: absolute;
+			z-index: 1;
+			top: 5px; /* Adjust the top position as needed */
+			left: 12%; /* Center horizontally */
+			transform: translateX(-50%); /* Center horizontally */
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center; /* Center the content */
+            position: relative; /* Make it a positioned container for absolute positioning inside */
+            z-index: 0; /* Default z-index */
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .questions-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .question {
+            cursor: pointer;
+            padding: 10px;
+            background-color: lightblue;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .question:hover {
+            background-color: #a9c8e9; /* Lighter shade of blue on hover */
+        }
+
+        .answer {
+            display: none;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .answer.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html">
+    <img class="logo" src="C:\Users\Mari 2\Desktop\WorkProtocols.com\Logo.png" alt="Logo">
+</a>
+
+
+<div class="container">
+
+    <div class="title">Questions and Answers</div>
+
+    <ul class="questions-list">
+        <li>
+            <div class="question" onclick="toggleAnswer(1)">Question 1: What is HTML?</div>
+            <div class="answer" id="answer1">HTML stands for HyperText Markup Language. It is the standard markup language for creating web pages.</div>
+        </li>
+        <li>
+            <div class="question" onclick="toggleAnswer(2)">Question 2: What is CSS?</div>
+            <div class="answer" id="answer2">CSS stands for Cascading Style Sheets. It is a style sheet language used for describing the look and formatting of a document written in HTML.</div>
+        </li>
+        <li>
+            <div class="question" onclick="toggleAnswer(3)">Question 3: What is JavaScript?</div>
+            <div class="answer" id="answer3">JavaScript is a programming language that enables interactive web pages. It is an essential part of web development.</div>
+        </li>
+    </ul>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            var answerId = "answer" + questionNumber;
+            var answerElement = document.getElementById(answerId);
+
+            answerElement.classList.toggle('show');
+
+            // Highlight the clicked question
+            var questionElement = document.querySelector('.question.active');
+            if (questionElement) {
+                questionElement.classList.remove('active');
+            }
+
+            var clickedQuestion = document.querySelector('.question:nth-child(' + questionNumber + ')');
+            clickedQuestion.classList.add('active');
+        }
+    </script>
+</div>
+
+</body>
+</html>
